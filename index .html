@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>An toàn giao thông ở THPT</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #000000;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2f9e44, #1c7c6d, #0b4f6c, #1c2f63, #2f4275, #3c8091, #bdaf5c, #b8a749);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #083344;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 30px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .box {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h1 {
+            color: #8c2924;
+        }
+
+        .box h2 {
+            color: #1d2b57;
+        }
+
+        .box h3 {
+            color: #4b6b96;
+        }
+
+        .box p {
+            line-height: 1.7;
+            color: #000000;
+        }
+
+        .image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: block;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropbtn {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            border-radius: 6px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #000;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f0f2f5;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        footer {
+            background-color: #083344;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+
+        header {
+            position: relative;
+        }
+
+        .login-top {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-weight: bold;
+        }
+        }
+
+        .login-top a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        .login-box {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            width: 250px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-box input {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .login-box button {
+            width: 100%;
+        }
+
+        .login-top a {
+            color: white;
+            background: #489687;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .image-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .image-row img {
+            width: 45%;
+            border-radius: 10px;
+        }
+    
+            .slider {
+            position: relative;
+            width: 460px;
+            margin: 20px auto;
+            overflow: hidden;
+            }
+            
+            .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            }
+            
+            .slides img {
+            width: 460px;
+            height: 290px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            }
+            
+            /* Nút mũi tên */
+            .nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50%;
+            display: none;
+            }
+            
+            .slider:hover .nav {
+            display: block;
+            }
+            
+            .prev { left: 10px; }
+            .next { right: 10px; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="font-size: 30px">AN TOÀN GIAO THÔNG CÙNG <br>HỌC SINH TRUNG HỌC PHỔ THÔNG </h1>
+
+        <p style="font-size:0.80em">An toàn hôm nay, ngày mai còn mãi.</p>
+
+        <div class="login-top">
+            <a href="#" id="loginBtn" onclick="toggleLogin()">Đăng nhập / Đăng ký</a>
+
+    </header>
+    <nav>
+        <a href="#gioithieu">Giới thiệu</a>
+        <div class="dropdown">
+            <span class="dropbtn">Thông tin ▾</span>
+            <div class="dropdown-content">
+                <a href="#muc1">Luật pháp</a>
+                <a href="#muc2">Thực trạng</a>
+                <a href="#muc3">Giải pháp</a>
+                <a href="#muc4">Một số mẫu truyện hài</a>
+            </div>
+        </div>
+        <a href="#Dinhhuongphattrien">Định hướng phát triển</a>
+        <a href="#lienhe">Liên hệ</a>
+    </nav>
+
+    </div>
+    <div class="login-box" id="loginBox">
+        <h3>Bạn muốn?</h3>
+
+        <button onclick="showLogin()">Đăng nhập</button>
+        <button onclick="showRegister()">Đăng ký</button>
+
+        <div id="loginForm" style="display:none; margin-top:10px;">
+            <h4>Đăng nhập</h4>
+            <input type="text" id="loginUser" placeholder="Tên đăng nhập">
+            <input type="password" id="loginPass" placeholder="Mật khẩu">
+            <button onclick="login()">Đăng nhập</button>
+        </div>
+
+        <div id="registerForm" style="display:none; margin-top:10px;">
+            <h4>Đăng ký</h4>
+            <input type="text" id="regUser" placeholder="Tên đăng nhập">
+            <input type="password" id="regPass" placeholder="Mật khẩu">
+            <button onclick="register()">Đăng ký</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="box" id="gioithieu">
+            <h1>Giới thiệu</h1>
+            <p> Chào mừng bạn đến với website do tụi mình tạo ra với mong muốn chia sẻ những thông tin hữu ích xoay
+                quanh an toàn giao thông. Ở đây, tụi mình cùng nhau tìm hiểu và chia sẻ những kiến thức cơ bản, dễ hiểu
+                về an toàn giao thông, để ai cũng có thể áp dụng trong cuộc sống hằng ngày. </p>
+
+            <p>Thông qua website này, tụi mình hy vọng có thể góp một phần nhỏ trong việc tuyên truyền ý thức chấp hành
+                luật giao thông, giúp mỗi chuyến đi đều an toàn hơn. Chỉ cần chậm lại một chút, cẩn thận hơn một chút,
+                là chúng ta đã cùng nhau xây dựng một môi trường giao thông văn minh và an toàn rồi 🚦 </p>
+        </div>
+        <div class="box" id="thongtin">
+            <h1>Thông tin chi tiết</h1>
+            <div id="muc1">
+                <h2>Luật pháp</h2>
+                <p style="color:turquoise">(Dưới đây là một số luật giao thông phổ biến thường gặp trong đời sống.) </p>
+                <h3>1. Quy định chung khi tham gia giao thông</h3>
+                <p> Khi tham gia giao thông, mọi người. Hệ thống đèn tín hiệu, biển báo và vạch kẻ đường phải được chấp
+                    hành nghiêm túc. Việc đi đúng luật giúp bảo đảm an toàn cho bản thân và những người xung quanh. </p>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge-PEgwngZG8Fz33-wRnMmDzoIVKcK1XtExbHUk-jpmr-AuEzXVsMFcdPqRBUhyphenhyphenBK7DdZmhHfoEp7_b8wbEsGnCrkV5NCBYXWrOThPDNUidNUv6QRTG8M1dcHvITMbOTXk2wAm9YOS6bY/s1600/hoclaixemienbac-chaphanhluatgiaothong.jpg" alt="Quy định an toàn giao thông" class="image">
+                <h3>2. Mũ bảo hiểm và an toàn cá nhân</h3>
+                <p>Người điều khiển và người ngồi trên xe mô tô, xe gắn máy, xe máy điện phải đội mũ bảo hiểm đạt chuẩn
+                    và cài quai đúng
+                    cách. Không chở quá số người quy định và luôn chú ý bảo đảm an toàn cho trẻ em khi tham gia giao
+                    thông. Những biện pháp này giúp giảm thiểu rủi ro khi xảy ra tai nạn.</p>
+                <img src="https://tuoitrethudo.com.vn/stores/news_dataimages/2022/122022/28/10/hoc-sinh-doi-mu-bao-hiem120221228101255.jpg?rt=20221228101540" alt="Đội mũ bảo hiểm" class="image">
+                <h3>3. Tốc độ và khoảng cách an toàn</h3>
+                <p>Người tham gia giao thông cần chạy đúng tốc độ cho phép theo từng tuyến đường. Luôn giữ khoảng cách
+                    an toàn với phương
+                    tiện phía trước, đặc biệt tại khu dân cư và các giao lộ. Việc kiểm soát tốc độ giúp hạn chế tai nạn
+                    và xử lý kịp thời
+                    các tình huống bất ngờ.</p>
+                <div class="image-row">
+                    <img src="https://cdn.luatminhkhue.vn/lmk/articles/107/539575/nguyen-nhan-vi-pham-an-toan-giao-thong-o-hoc-sinh-hien-nay-539575.jpg" alt="Tốc độ">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOe79EU3sahiKe-aq0T8VL5JJH8hxdz69ydQ&s" alt="Khoảng cách">
+                </div>
+                <h3>4. Sử dụng điện thoại khi lái xe</h3>
+                <p>Việc sử dụng điện thoại khi đang điều khiển phương tiện làm giảm sự tập trung và tăng nguy cơ tai
+                    nạn. Người tham gia giao thông nên dừng xe vào nơi an toàn nếu cần nghe hoặc gọi điện. Luôn quan sát
+                    và chú ý xung quanh để xử lý kịp thời các tình huống trên đường.
+                    <img src="https://vnanet.vn/Data/Articles/2020/11/26/5152845/vna_potal_an_toan_giao_thong_hoc_sinh_di_xe_may_dien_chua_chap_hanh_luat_giao_thong_tai_thai_binh_stand.jpg" alt="Sử dụng điện thoại khi tham gia giao thông" class="image">
+                <h3>5. Giấy tờ và tình trạng phương tiện</h3>
+                <p>Người điều khiển phương tiện cần mang theo đầy đủ giấy tờ như giấy phép lái xe, đăng ký xe và bảo
+                    hiểm theo quy định. Phương tiện tham gia giao thông phải bảo đảm an toàn kỹ thuật, hoạt động tốt.
+                    Điều này giúp việc lưu thông an toàn và đúng pháp luật.</p>
+            <img src="https://tayho360.vn/upload/admin/files/doi_giay_phep_lai_xe_a1_0242958fec.jpg" alt="Sử dụng điện thoại khi tham gia giao thông" class="image">
+            </div>
+            <div id="muc2">
+                <h2>Thực trạng</h2>
+
+                <iframe width="510" height="315" src="https://www.youtube.com/embed/LqflDg0Y2Eg"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <h3>1.Tình huống nguy hiểm thường xảy ra</h3>
+                <p> -Người điều khiển xe máy vượt đèn đỏ tại các ngã tư, không chấp hành tín hiệu giao thông và tiếp tục
+                    di chuyển khi chưa đến lượt.<br>
+
+                -Người đi bộ băng qua đường không đúng nơi quy định, sang đường tùy tiện mà không quan sát kỹ tình hình giao thông.<br>
+
+                -Người điều khiển xe máy đi ngược chiều trên đường một chiều hoặc lấn sang làn đường dành cho phương tiện khác.<br>
+
+                -Người tham gia giao thông không đội mũ bảo hiểm hoặc đội mũ nhưng không cài quai đúng cách khi điều khiển xe máy, xe máy điện.<br>
+
+                -Người lái xe sử dụng điện thoại để nghe, gọi hoặc nhắn tin trong khi đang điều khiển phương tiện.<br>
+
+                -Phương tiện dừng, đỗ xe không đúng nơi quy định, che khuất tầm nhìn hoặc cản trở các phương tiện khác lưu thông.<br>
+
+                -Người điều khiển phương tiện chở quá số người quy định, chở hàng cồng kềnh khi tham gia giao thông. </p>
+                <h3>2. Tình huống ùn tắc</h3>
+                <p>-Tình trạng kẹt xe kéo dài xảy ra do tai nạn giao thông trên các tuyến đường chính, khiến nhiều
+                    phương tiện phải dừng lại
+                    hoặc di chuyển chậm trong thời gian dài.<br>
+
+                -Ùn tắc giao thông thường xuyên xuất hiện trước cổng trường học vào giờ tan học, khi lượng lớn phụ huynh và học sinh tập trung đưa đón cùng lúc.<br>
+
+                -Đường phố bị ngập nước trong những trận mưa lớn, làm các phương tiện di chuyển khó khăn và gây ách tắc giao thông trên nhiều tuyến đường.
+                </p>
+                <h3>3.Tình huống ứng xử thiếu văn hóa</h3>
+                <p>-Người tham gia giao thông tranh giành đường đi, liên tục bấm còi inh ỏi khi gặp ùn tắc hoặc đông
+                    phương tiện.<br>
+
+                -Xảy ra cãi vã, to tiếng hoặc xô xát giữa những người tham gia giao thông sau các va chạm nhỏ trên đường.<br>
+
+                -Một số phương tiện không chủ động nhường đường cho xe cứu thương, xe cứu hỏa và các xe ưu tiên đang làm nhiệm vụ.
+                </p>
+                <h3>4.Tình huống tích cực</h3>
+                <p>-Người dân dừng xe đúng vạch, chấp hành đèn tín hiệu.<br>
+                -Giúp đỡ người già, trẻ em qua đường.<br>
+                -Thanh niên tình nguyện điều tiết giao thông giờ cao điểm.
+                </p>
+            </div>
+            <div id="muc3">
+                <h2>Giải pháp</h2>
+                <h3>1. Môi trường học đường </h3>
+                    
+                    <div class="slider">
+                        <button class="nav prev" onclick="moveSlide(-1)">&#10094;</button>
+                    
+                        <div class="slides" id="slides">
+                            <img src="https://baocamau.vn/image/ckeditor/2023/20231209/images/4.jpg" alt="Hoạt động 1">
+                            <img src="https://cdn.giaoducthoidai.vn/images/9c4eb0f125dd497020206ef8fe560b40ab93c272683ee4510172af3e603e4f91eefe91af54dc234415a7058d12622231d0c2f00b80bdfbf7a6ccc5b322ab0f8c524d8b2b028529216e01717a2a4077c33ee73037142d8becab8e75975b883df9/day-an-toan-giao-thong-trong-truong-hoc-co-kiem-tra-dau-ra-2.jpg" alt="Hoạt động 2">
+                            <img src="https://baovephapluat.vn/data/images/0/2025/09/16/ngocpc/z7019251718344-2eb7db53984843a8bb58185c7344618b.jpg?dpi=150&quality=100&w=820" alt="Hoạt động 3">
+                            <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2024/11/1/edit-a1-6-8454-17304532898671349701794.png" alt="Hoạt động 4">
+                        </div>
+                    
+                        <button class="nav next" onclick="moveSlide(1)">&#10095;</button>
+                    </div>
+                </div>
+                <p>- Tổ chức lễ sinh hoạt với học sinh về tác hại khi tham gia giao thông không đúng cách, đồng thời
+                    giải đáp thắc mắc của học sinh nếu còn khúc mắc.<br>
+                - Lồng ghép ATGT vào các môn học trải nghiệm, GDCD.... để nâng cao trình độ nhận thức.<br>
+                - Tổ chức các cuộc thi về an toàn giao thông nhằm tuyên truyền, quảng bá rộng rãi hơ<br>
+                -Phối hợp với phụ huynh trong việc nhắc nhở và quản lý học sinh khi tham gia giao thông, đặc biệt vào giờ đến trường và
+                tan học. </p>
+            <h3>2. Xã hội</h3>
+                <P>- Lan tỏa bằng cách hashtag #ANTOANGIAOTHONG, #DaUongRuouBiaKhongLaiXe... khi đăng tải vấn đề liên
+                    quan lên mạng xã hội<br>
+                - In băng rôn, áp phích, pano tại các khu vực công cộng (Tttmại, bến xe, siêu thị....) nhằm tăng chú ý và cảnh giác cho người dân.<br>
+                - Xây dựng văn hóa giao thông cho cộng đồng ( rèn luyện thói quen đi đúng làn đường, đội mũ khi tham gia giao thông, không đi dàn hàng ngang...)<br>
+                -Phát huy vai trò của các tổ chức, đoàn thể địa phương trong việc tuyên truyền và nhắc nhở người dân chấp hành luật giao thông thông qua các hoạt động cộng đồng.
+                </P>
+                <div id="muc4">
+                <h2>Một số mẫu truyện hài</h2>
+                <h3>Chúng mình có một số mẫu truyện ngắn gửi các bạn cùng đọc nhé!</h3>
+                <h4 style="color:tomato">1.Mũ bảo hiểm đa năng</h4>
+                <p>
+                    Nam không đội mũ, nói:<br>
+                - “Đội mũ nóng đầu lắm!”<br>
+                Mũ bảo hiểm đáp:<br>
+                - “Không đội thì mát đầu luôn, mát tới… lạnh.”<br>
+                Nam nghe xong, đội liền, vì thà nóng đầu còn hơn… khỏi có đầu 😵💫
+                </p>
+                <h4 style="color:tomato">2.Tốc độ là bạn, nhưng không thân</h4>
+                <p>A chạy xe như bay 🚀<br>
+                B hỏi: “Sao chạy nhanh thế?”<br>
+                A: “Cho đời thêm kịch tính.”<br>
+                B: “Ờ… kịch tính xong là lên phim tài liệu đó.”
+                </p>
+                <h4 style="color:tomato">3.Vượt ẩu</h4>
+                <p>A (vặn ga): “Đường trống mà, vượt chút có sao đâu!”<br>
+                B: “Ê từ từ, thấy bảng cấm vượt kìa.”<br>
+                A: “Lo gì, tay lái anh ổn áp lắm.”<br>
+                B (nhìn thẳng): “Ừ, vượt chút thôi… vượt luôn cuộc đời.”<br>
+                A im lặng 3 giây, nhả ga liền: “Ờ… thôi để đời còn dài đã.”
+                </p>
+            </div>
+            
+        </div>
+        <div class="box" id="Dinhhuongphattrien">
+            <h1>Định hướng phát triển</h1>
+            <p> Trong thời gian tới, website hướng đến việc tiếp tục cập nhật và mở rộng các nội dung liên quan đến an
+                toàn giao thông theo hướng gần gũi, dễ hiểu và phù hợp với nhiều đối tượng. Chúng mình mong muốn không
+                chỉ cung cấp kiến thức cơ bản mà
+                còn tạo ra không gian để mọi người cùng tìm hiểu, chia sẻ và nâng cao ý thức khi tham gia giao thông.<br>
+
+            Bên cạnh đó, nhóm sẽ phát triển thêm các hình thức truyền tải đa dạng như hình ảnh, video, tình huống minh họa và các hoạt động tương tác nhằm giúp nội dung trở nên sinh động hơn. Thông qua đó, website hy vọng góp phần lan tỏa thông điệp an toàn giao thông và xây dựng văn hóa giao thông văn minh trong cộng đồng.
+            </p><br>
+            <p style="color:darkred">Mọi thắc mắc, góp ý xin vui lòng gửi qua gmail trong phần liên hệ. Chúng mình sẽ
+                lắng nghe và đón nhận mọi thông tin vì một xã hội không còn nỗi lo về tai nạn giao thông!</p>
+
+        </div>
+        <div class="box" id="lienhe">
+            <h1>Liên hệ</h1>
+            <p> Người phụ trách chính: Anh Trần<br> Hỗ trợ viên: Thanh Huyền, Bảo Trân, Kim Ngân, Vũ Huy <br>Email: Vi.diem10.ma.co@gmail.com<br> Số điện thoại: 0123 456 789
+            </p>
+            <p> Địa chỉ : 269/8 Nguyễn Thị Nhỏ, phường Minh Phụng, TP. Hồ Chí Minh</p>
+        </div>
+    </div>
+    <footer>
+        <p>AN TOÀN GIAO THÔNG</p>
+    </footer>
+    <script>
+        function toggleLogin() {
+        let box = document.getElementById("loginBox");
+        box.style.display = (box.style.display === "block") ? "none" : "block";
+        hideForms();
+    }
+    
+    function hideForms() {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "none";
+    }
+    
+    function showLogin() {
+        hideForms();
+        document.getElementById("loginForm").style.display = "block";
+    }
+    
+    function showRegister() {
+        hideForms();
+        document.getElementById("registerForm").style.display = "block";
+    }
+    
+    function register() {
+        let user = regUser.value;
+        let pass = regPass.value;
+    
+        if (user === "" || pass === "") {
+            alert("Nhập đầy đủ thông tin!");
+            return;
+        }
+    
+        if (localStorage.getItem(user)) {
+            alert("Tài khoản đã tồn tại!");
+            return;
+        }
+    
+        localStorage.setItem(user, pass);
+        alert("Đăng ký thành công!");
+        document.getElementById("loginBox").style.display = "none";
+    }
+    
+    function login() {
+        let user = loginUser.value;
+        let pass = loginPass.value;
+    
+        if (localStorage.getItem(user) === pass) {
+            alert("Xin chào " + user);
+            document.getElementById("loginBox").style.display = "none";
+        } else {
+            alert("Sai tài khoản hoặc mật khẩu!");
+        }
+    }
+    
+    document.addEventListener("click", function (e) {
+        let box = document.getElementById("loginBox");
+        let btn = document.getElementById("loginBtn");
+    
+        if (!box.contains(e.target) && !btn.contains(e.target)) {
+            box.style.display = "none";
+        }
+    });
+    </script>
+    <script>
+        let index = 0;
+    
+    function moveSlide(step) {
+        const slides = document.getElementById("slides");
+        const total = slides.children.length;
+        index += step;
+    
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+    
+        slides.style.transform = `translateX(${-index * 460}px)`;
+    }
+    </script>
+</body>
+
+</html>
